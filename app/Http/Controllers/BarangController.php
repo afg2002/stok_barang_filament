@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Barang;
 use Illuminate\Http\Request;
-
+use PDF;
 class BarangController extends Controller
 {
     /**
@@ -61,5 +61,12 @@ class BarangController extends Controller
     public function destroy(Barang $barang)
     {
         //
+    }
+    public function exportPdf()
+    {
+        $barang = Barang::with('supplier')->get(); // Eager load 'supplier' relationship
+        $pdf = PDF::loadView('pdf/barang', compact('barang'));
+
+        return $pdf->download('data_barang.pdf');
     }
 }

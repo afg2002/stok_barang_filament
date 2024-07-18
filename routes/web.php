@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\BarangController;
+use App\Http\Controllers\TransaksiController;
+use App\Http\Controllers\SupplierController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,3 +18,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('export/supplier/pdf', [SupplierController::class, 'exportPdf'])->name('download.supplier.pdf');
+
+Route::get('export/barang/pdf', [BarangController::class, 'exportPdf'])->name('download.barang.pdf');
+
+Route::get('export/transaksi/pdf', [TransaksiController::class, 'exportPdf'])->name('download.transaksi.pdf');

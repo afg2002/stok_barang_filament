@@ -21,7 +21,6 @@ class BarangFactory extends Factory
             'harga' => $this->faker->randomFloat(2, 1000, 100000),
             'gambar' => $this->faker->imageUrl,
             'supplier_id' => Supplier::factory(),
-            'tanggal_masuk' => now(),
         ];
     }
 }

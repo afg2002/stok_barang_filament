@@ -14,17 +14,10 @@ class BarangExporter extends Exporter
     public static function getColumns(): array
     {
         return [
-            ExportColumn::make('id')
-                ->label('ID'),
+            ExportColumn::make('id')->label('ID'),
             ExportColumn::make('nama'),
-            ExportColumn::make('deskripsi'),
-            ExportColumn::make('jumlah'),
-            ExportColumn::make('harga'),
-            ExportColumn::make('gambar'),
-            ExportColumn::make('supplier_id'),
-            ExportColumn::make('tanggal_masuk'),
-            ExportColumn::make('created_at'),
-            ExportColumn::make('updated_at'),
+            ExportColumn::make('kontak'),
+            ExportColumn::make('alamat'),
         ];
     }
 

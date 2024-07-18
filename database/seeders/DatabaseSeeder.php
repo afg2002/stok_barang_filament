@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Barang;
 use App\Models\Supplier;
+use App\Models\Transaksi;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -25,5 +26,6 @@ class DatabaseSeeder extends Seeder
     public function run() {
         Supplier::factory()->count(10)->create();
         Barang::factory()->count(50)->create();
+        Transaksi::factory()->count(50)->create();
     }
 }

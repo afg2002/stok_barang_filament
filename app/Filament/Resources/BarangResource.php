@@ -27,6 +27,8 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Tables\Filters\Filter;
+use Filament\Tables\Actions\Action;
+
 
 class BarangResource extends Resource
 {
@@ -45,7 +47,6 @@ class BarangResource extends Resource
                     TextInput::make('harga')->required()->numeric(),
                     FileUpload::make('gambar')->nullable()->image(),
                     Select::make('supplier_id')->relationship('supplier','nama')->required()->searchable(),
-                    DatePicker::make('tanggal_masuk')->required(),
                 ])
             ]);
     }
@@ -54,9 +55,9 @@ class BarangResource extends Resource
     {
         return $table
             ->headerActions([
-                ExportAction::make()
+                Action::make('Export pdf')->url(fn (): string => route('download.barang.pdf'))->openUrlInNewTab(true),
+                ExportAction::make()->label('Export CSV')
                 ->exporter(BarangExporter::class)->formats([
-                    ExportFormat::Xlsx,
                     ExportFormat::Csv,
                 ])->fileName(fn (Export $export): string => "Barang-{$export->getKey()}.csv")
             ])
@@ -67,8 +68,6 @@ class BarangResource extends Resource
                 TextColumn::make('harga')->money('IDR', locale : 'id'),
                 ImageColumn::make('gambar')->rounded(),
                 TextColumn::make('supplier.nama')->label('Supplier')->searchable(),
-                TextColumn::make('tanggal_masuk')
-                    ->date(),
             ])
             ->filters([
                 SelectFilter::make('supplier')->relationship('supplier','nama')->multiple()->searchable()->preload(),

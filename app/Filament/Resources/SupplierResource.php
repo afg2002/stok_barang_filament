@@ -2,9 +2,13 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\Exports\SupplierExporter;
 use App\Filament\Resources\SupplierResource\Pages;
 use App\Filament\Resources\SupplierResource\RelationManagers;
 use App\Models\Supplier;
+use Filament\Tables\Actions\ExportAction;
+use Filament\Actions\Exports\Enums\ExportFormat;
+use Filament\Actions\Exports\Models\Export;
 use Filament\Forms;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\Textarea;
@@ -16,7 +20,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-
+use Filament\Tables\Actions\Action;
 class SupplierResource extends Resource
 {
     protected static ?string $model = Supplier::class;
@@ -38,6 +42,13 @@ class SupplierResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+        ->headerActions([
+            ExportAction::make()->label('Export CSV')
+                ->exporter(SupplierExporter::class)->formats([
+                    ExportFormat::Csv,
+                ])->fileName(fn (Export $export): string => "Supplier-{$export->getKey()}.csv"),
+            Action::make('Export pdf')->url(fn (): string => route('download.supplier.pdf'))->openUrlInNewTab(true)
+        ])
         ->columns([
             TextColumn::make('nama')->sortable()->searchable(),
             TextColumn::make('kontak')->sortable()->searchable(),

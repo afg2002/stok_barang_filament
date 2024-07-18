@@ -19,7 +19,6 @@ return new class extends Migration
             $table->decimal('harga');
             $table->string('gambar')->nullable();
             $table->foreignId('supplier_id')->constrained('supplier')->onDelete('cascade');
-            $table->timestamp('tanggal_masuk')->useCurrent();
             $table->timestamps();
         });
     }

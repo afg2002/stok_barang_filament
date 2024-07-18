@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Supplier;
 use Illuminate\Http\Request;
-
+use PDF;
 class SupplierController extends Controller
 {
     /**
@@ -62,4 +62,13 @@ class SupplierController extends Controller
     {
         //
     }
+    public function exportPdf()
+    {
+        $suppliers = Supplier::all(); // Retrieve all suppliers
+
+        $pdf = PDF::loadView('pdf/supplier', compact('suppliers'));
+
+        return $pdf->download('data_supplier.pdf');
+    }
+    
 }

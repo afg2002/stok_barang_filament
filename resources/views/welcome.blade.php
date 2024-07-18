@@ -3,30 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pengadaan Barang App - Solusi Pengadaan Terdepan</title>
+    <title>Pengadaan Barang App - LLDIKTI Wilayah III</title>
     <script src="{{asset('/js/tailwind.js')}}"></script>
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('images/logo_lldikti3.ico')}}" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
 </head>
 <body class="bg-gray-100 font-sans">
-    <header class="bg-white shadow-md">
+<header>
         <nav class="container mx-auto px-6 py-3">
             <div class="flex justify-between items-center">
-                <div class="text-xl font-bold text-gray-800">Pengadaan Barang App</div>
+                <div>
+                    <!-- Logo di sini -->
+                    <img src="{{ asset('images/logo.png') }}" alt="Logo Pengadaan Barang App" class="h-12">
+                </div>
                 <div class="hidden md:flex space-x-4">
-                    <a href="#fitur" class="text-gray-800 hover:text-green-600">Fitur</a>
-                    <a href="#tentang" class="text-gray-800 hover:text-green-600">Tentang</a>
-                    <a href="#kontak" class="text-gray-800 hover:text-green-600">Kontak</a>
+                    <a href="#fitur" class="text-gray-800 hover:text-blue-600">Fitur</a>
+                    <a href="#tentang" class="text-gray-800 hover:text-blue-600">Tentang</a>
+                    <a href="#kontak" class="text-gray-800 hover:text-blue-600">Kontak</a>
                 </div>
             </div>
         </nav>
     </header>
 
+
     <main>
-        <section class="bg-green-600 text-white py-20">
+        <section class="bg-blue-600 text-white py-20">
             <div class="container mx-auto px-6 text-center">
                 <h1 class="text-4xl font-bold mb-4">Selamat Datang di Pengadaan Barang App</h1>
-                <p class="text-xl mb-8">Solusi Pengadaan Barang Terdepan untuk Efisiensi Bisnis Anda</p>
-                <a href="http://127.0.0.1:8000/admin" class="bg-white text-green-600 py-2 px-6 rounded-full text-lg font-semibold hover:bg-gray-100 transition duration-300">Masuk Aplikasi</a>
+                <p class="text-xl mb-8">Pengadaan Barang LLDIKTI Wilayah III</p>
+                <a href="{{ env('NGROK_URL') }}/admin" class="bg-white text-blue-600 py-2 px-6 rounded-full text-lg font-semibold hover:bg-gray-100 transition duration-300">Masuk Aplikasi</a>
+
             </div>
         </section>
 
@@ -35,17 +41,17 @@
                 <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Fitur Utama</h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <div class="bg-white p-6 rounded-lg shadow-md">
-                        <i class="fas fa-boxes text-4xl text-green-600 mb-4"></i>
+                        <i class="fas fa-boxes text-4xl text-blue-600 mb-4"></i>
                         <h3 class="text-xl font-semibold mb-2">Manajemen Barang</h3>
                         <p class="text-gray-600">Kelola stok barang Anda dengan mudah dan efisien.</p>
                     </div>
                     <div class="bg-white p-6 rounded-lg shadow-md">
-                        <i class="fas fa-user-tie text-4xl text-green-600 mb-4"></i>
+                        <i class="fas fa-user-tie text-4xl text-blue-600 mb-4"></i>
                         <h3 class="text-xl font-semibold mb-2">Manajemen Supplier</h3>
                         <p class="text-gray-600">Kelola data supplier dan lakukan pembelian dengan mudah.</p>
                     </div>
                     <div class="bg-white p-6 rounded-lg shadow-md">
-                        <i class="fas fa-file-export text-4xl text-green-600 mb-4"></i>
+                        <i class="fas fa-file-export text-4xl text-blue-600 mb-4"></i>
                         <h3 class="text-xl font-semibold mb-2">Export</h3>
                         <p class="text-gray-600">Export data barang dan supplier untuk analisis lebih lanjut.</p>
                     </div>
@@ -63,7 +69,7 @@
 
     <footer class="bg-gray-800 text-white py-8">
         <div class="container mx-auto px-6 text-center">
-            <p>&copy; 2024 Pengadaan Barang App. Hak Cipta Dilindungi.</p>
+            <p>&copy; 2024 LLDIKTI Wilayah III. Hak Cipta Dilindungi.</p>
         </div>
     </footer>
 
